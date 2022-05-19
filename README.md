@@ -1,2 +1,3 @@
 # someAlgorithm
-Some important / key concep algorithm for java
+Some pratice problems that similar to leetcode
+for self learning and self praticing
