@@ -1,3 +1,17 @@
+**Clarification**: The definition of subset is does not have order, we can either chose or not chose . Given a set of String, want to return the subset, which mean a combination from empty to all. Return List of String, input is set of String
+
+**Assumption**: No duplicate char in the set
+
+**Solution**: implment dfs and backtracking
+
+1. what does it store on each level? → on each level we sote a char →每层只需要一个元素
+2. How many different states should we try to put on this level → two branches →add or not add
+3. How many level → n level
+
+Time: O(2^n * n)
+
+Space: O(n)
+    
 package DFS;
 
 import java.util.ArrayList;
