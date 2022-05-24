@@ -1,0 +1,62 @@
+//Method 1 => using two pointers
+public List<Integer> common(int[] A, int[] B){
+	List<Integer> set = new ArrayList<>();
+	if (A.length == 0 || B.length == 0) return result;
+	int i = 0;
+	int j = 0;
+	while (i < A.length && j < B.length){
+		if (A[i] == B[j]){
+				set.add(A[i]);
+				i++;
+				j++;
+		} else if (A[i] > B[j]){
+				j++;
+		} else {
+				i++;
+		}
+	}
+	return set;
+}
+
+time: O(n + m)
+Space: O(min(m , n)) where m is the size of array a, and n is the size of array b → O(1)
+
+//Method 2 -> using HashMap
+public class Solution {
+  public List<Integer> common(int[] A, int[] B) {
+    List<Integer> common = new ArrayList<>();
+    if (A.length == 0 || B.length == 0) return common;
+
+    HashMap<Integer, Integer> countA = new HashMap<>();
+    for (int num : A){
+      Integer ct = countA.get(num);
+      if (ct != null){
+        countA.put (num, ct + 1);
+      } else {
+        countA.put (num,  1);
+      }
+    }
+    HashMap<Integer, Integer> countB = new HashMap<>();
+    for (int num : B){
+      Integer ct = countB.get(num);
+      if (ct != null){
+        countB.put (num, ct + 1);
+      } else {
+        countB.put (num, 1);
+      }
+    }
+    for (Map.Entry<Integer, Integer> entry : countA.entrySet()){
+      Integer ctInB = countB.get(entry.getKey());
+      if (ctInB != null){
+        int appear = Math.min(entry.getValue(), ctInB);
+        for (int i = 0; i < appear; i++){
+          common.add(entry.getKey());
+        }
+      }
+    }
+    return common;
+  }
+}
+
+time: O(n + m)
+Space: O(min(m , n)) where m is the size of array a, and n is the size of array b → O(1)
