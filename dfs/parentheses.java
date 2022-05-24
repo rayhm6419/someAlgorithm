@@ -7,7 +7,6 @@ public class parentheses {
     public static List<String> validParentheses(int n) {
         List<String> result = new ArrayList<String>();
         char[ ] cur = new char[n *2];
-        System.out.println(cur);
         helper(cur, n ,n ,0, result);
         return result;
     }
