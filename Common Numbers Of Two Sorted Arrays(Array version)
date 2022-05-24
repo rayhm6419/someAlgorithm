@@ -60,3 +60,7 @@ public class Solution {
 
 time: O(n + m)
 Space: O(min(m , n)) where m is the size of array a, and n is the size of array b → O(1)
+
+在面试中如果用HashMap的方法，要注意clarify 是unsorted还是sorted，最后return的是升序还是降序，因为**Hashmap是natural order，想要排好序的结构需要用LinkedHashMap**
+
+Howerver, method 1 和 method 2的时空间复杂度都一样，method 1易读性更高，最好用method 1 ****
