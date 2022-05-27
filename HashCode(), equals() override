@@ -1,0 +1,30 @@
+A good explanation for why need to Override the HashCode() and Equals()
+https://blog.csdn.net/qq_41345281/article/details/89218522?spm=1001.2101.3001.6650.12&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-12-89218522-blog-46295439.pc_relevant_antiscanv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-12-89218522-blog-46295439.pc_relevant_antiscanv2&utm_relevant_index=16
+
+
+Belows are the method of overriding
+class Coordinate{
+     public int x;
+     public int y;
+     public Coordinate(int x, int y){
+         this.x = x;
+         this.y = y;
+     }
+
+     @Override // for equals
+    public boolean equals(Object obj){
+         if (obj == this){
+             return true;
+         }
+         if (!(obj instanceof  Coordinate)){
+             return false;
+         }
+         Coordinate another = (Coordinate) obj;
+         return this.x == another.x && this.y == another.y;
+         }
+
+    @Override    // for HashCode()
+    public int hashCode() {
+        return x * 101 + y;
+    }
+}
