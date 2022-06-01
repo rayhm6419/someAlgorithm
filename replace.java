@@ -1,3 +1,8 @@
+这道题的trick:
+
+1. 当original string ≥ subString, 那样就可以用正常的遍历方法并且覆盖掉 → 不需要考虑开辟新的array长度
+2. 当 original string < subString, 这时候就需要考虑开辟新的array长度，不然再做覆盖的时候，其中的char就会被抹掉
+
 package String;
 
 import java.util.ArrayList;
@@ -9,6 +14,8 @@ public class replace {
         if (original.length() >= subString.length()) return shorter(array, original, subString);
          return longer(array, original, subString);
     }
+    
+    **for shorterReplace
     private String shorter(char[] array, String original, String subString){
         int slow = 0;
         int fast = 0;
@@ -24,6 +31,7 @@ public class replace {
         return new String(array, 0, slow);
     }
 
+    ** for longer replace
     private String longer(char[] input, String s, String t){
         ArrayList<Integer> matches = getAllMatches(input, s);
         char[] result = new char[input.length + matches.size() * (t.length() - s.length())];
