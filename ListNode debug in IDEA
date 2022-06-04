@@ -1,0 +1,53 @@
+class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int val) {
+            this.val = val;
+            this.next = null;
+        }
+
+        ListNode() {
+            new ListNode(0);
+        }
+
+        @Override
+        public String toString() {
+            return printLinkedList(this);
+        }
+        //print out the value
+        private static String printLinkedList(ListNode head) {
+        StringBuilder sb = new StringBuilder();
+        while(head != null) {
+            sb.append(head.val + ", ");
+            head = head.next;
+        }
+        return sb.substring(0, sb.length()-2);
+    }
+
+    //a method convert Array to LinkedList
+    private static ListNode convertArrayToLinkedList(int[] input) {
+        ListNode head = new ListNode();
+        ListNode dummy = head;
+        for(int num: input) {
+            ListNode temp = new ListNode(num);
+            head.next = temp;
+            head = head.next;
+        }
+        return dummy.next;
+    }
+    //an example
+         public static ListNode reverseInPairs(ListNode head) {
+            if (head == null || head.next == null){
+                return head;
+            }
+            ListNode newHead = head.next;
+            head.next = reverseInPairs(head.next.next);
+            newHead.next = head;
+            return newHead;
+        }
+       //drive the code
+       public static void main(String[] args) {
+        ListNode head = convertArrayToLinkedList(new int[] {1,2,3,4,5,6});
+        System.out.println(reverseInPairs(head));
+        }
+     }
